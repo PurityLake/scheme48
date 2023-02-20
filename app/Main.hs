@@ -3,6 +3,7 @@ module Main where
 import Text.ParserCombinators.Parsec hiding (spaces)
 import System.Environment
 import Control.Monad (liftM)
+import Data.Bits (Bits(xor))
 
 data LispVal = Atom String
             | List [LispVal]
@@ -47,24 +48,23 @@ parseStringEscaped :: Parser Char
 parseStringEscaped = 
     do
         char '\\'
-        x <- oneOf "\"\\nrt"
+        x <- oneOf "\\\"nrt"
         return $ case x of
-                    '"'  -> '"'
-                    '\\' -> '\\'
-                    'n'  -> '\n'
-                    'r'  -> '\r'
-                    't'  -> '\t'
-                    _    -> ' '
+                '\\' -> x
+                '"'  -> x
+                'n'  -> '\n'
+                'r'  -> '\r'
+                't'  -> '\t'
 
 parseStringInner :: Parser Char
-parseStringInner = parseStringCharacter 
-                <|> parseStringEscaped
+parseStringInner = parseStringEscaped 
+                <|> parseStringCharacter 
 
 parseString :: Parser LispVal
 parseString =
     do
         char '"'
-        x <- many parseStringInner 
+        x <- many parseStringInner
         char '"'
         return $ String x
 
@@ -77,10 +77,12 @@ readExpr :: String -> String
 readExpr input = 
     case parse (spaces >> parseExpr) "lisp" input of
         Left err -> "No match: " ++ show err
-        Right val -> "Found value"
+        Right val -> "Found value " ++ case val of
+            String x -> x
 
 main :: IO ()
 main = 
     do
         (expr:_) <- getArgs
+        putStrLn expr
         putStrLn $ readExpr expr
