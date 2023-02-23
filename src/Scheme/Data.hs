@@ -17,6 +17,7 @@ data LispVal
   | Char Char
   | String String
   | Bool Bool
+  | Invalid
 
 instance Show LispVal where
   show = showVal
@@ -35,6 +36,6 @@ showVal (List contents) = "(" ++ unwordsList contents ++ ")"
 showVal (DottedList listhead listtail) =
   "(" ++ unwordsList listhead ++ " . " ++ showVal listtail ++ ")"
 showVal (Vector v) = "#(" ++ unwordsList (elems v) ++ ")"
-
+showVal Invalid = ""
 unwordsList :: [LispVal] -> String
 unwordsList = unwords . map showVal
