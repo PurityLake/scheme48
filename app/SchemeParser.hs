@@ -1,6 +1,6 @@
 module SchemeParser where
 
-import Scheme (LispVal)
+import Scheme
 import Data.Complex (Complex ((:+)))
 import GHC.Arr (Array, listArray)
 import Numeric (readBin, readFloat, readHex, readOct)

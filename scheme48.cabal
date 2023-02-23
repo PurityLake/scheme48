@@ -1,47 +1,33 @@
 cabal-version:      2.4
 name:               scheme48
 version:            0.1.0.0
-
--- A short (one-line) description of the package.
+build-type:         Simple
 -- synopsis:
-
--- A longer description of the package.
 -- description:
-
--- A URL where users can report bugs.
--- bug-reports:
-
--- The license under which the package is released.
--- license:
-
--- The package author(s).
--- author:
-
--- An email address to which users can send suggestions, bug reports, and patches.
--- maintainer:
-
--- A copyright notice.
--- copyright:
--- category:
-extra-source-files: CHANGELOG.md
-
-Library
-    exposed-modules: Scheme,
-                     SchemeParser,
-                     SchemeEval
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Robert O'Shea
+maintainer:         robertoshea2k11@gmail.com
+copyright:          2023 Robert O'Shea
+category:           Programming
+extra-source-files: README.md
+                    CHANGELOG.md
 
 executable scheme48
     main-is:          Main.hs
-
-    -- Modules included in this executable, other than Main.
-    other-modules: Scheme,
-                   SchemeParser,
-                   SchemeEval
-
-
-    -- LANGUAGE extensions used by modules in this package.
-    -- other-extensions:
+    other-modules:    Scheme,
+                      SchemeParser,
+                      SchemeEval
     build-depends:    base ^>=4.16.4.0, 
                       parsec
     hs-source-dirs:   app
     default-language: Haskell2010
+    ghc-options:      -Wall
+                      -Wcompat
+                      -Widentities
+                      -Wincomplete-record-updates
+                      -Wincomplete-uni-patterns
+                      -Wmissing-export-lists
+                      -Wmissing-home-modules
+                      -Wpartial-fields
+                      -Wredundant-constraints

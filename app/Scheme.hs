@@ -1,5 +1,8 @@
 module Scheme where
 
+import Data.Complex (Complex)
+import GHC.Arr (Array)
+
 data LispVal
   = Atom String
   | List [LispVal]
