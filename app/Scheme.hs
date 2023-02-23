@@ -1,9 +1,9 @@
-module Scheme (
-  LispVal(..)
-) where
+module Scheme
+  ( LispVal(..)
+  ) where
 
-import Data.Complex (Complex)
-import GHC.Arr (Array, elems)
+import           Data.Complex (Complex)
+import           GHC.Arr      (Array, elems)
 
 data LispVal
   = Atom String
@@ -18,7 +18,9 @@ data LispVal
   | String String
   | Bool Bool
 
-instance Show LispVal where show = showVal
+instance Show LispVal where
+  show :: LispVal -> String
+  show = showVal
 
 showVal :: LispVal -> String
 showVal (String contents) = "\"" ++ contents ++ "\""
@@ -31,7 +33,8 @@ showVal (Char c) = [c]
 showVal (Bool True) = "#t"
 showVal (Bool False) = "#f"
 showVal (List contents) = "(" ++ unwordsList contents ++ ")"
-showVal (DottedList listhead listtail) = "(" ++ unwordsList listhead ++ " . " ++ showVal listtail ++ ")"
+showVal (DottedList listhead listtail) =
+  "(" ++ unwordsList listhead ++ " . " ++ showVal listtail ++ ")"
 showVal (Vector v) = "#(" ++ unwordsList (elems v) ++ ")"
 
 unwordsList :: [LispVal] -> String
