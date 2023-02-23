@@ -1,23 +1,11 @@
 module SchemeParser where
 
+import Scheme (LispVal)
 import Data.Complex (Complex ((:+)))
 import GHC.Arr (Array, listArray)
 import Numeric (readBin, readFloat, readHex, readOct)
 import Text.Parsec.Token (GenTokenParser (decimal))
 import Text.ParserCombinators.Parsec
-
-data LispVal
-  = Atom String
-  | List [LispVal]
-  | DottedList [LispVal] LispVal
-  | Vector (Array Int LispVal)
-  | Number Integer
-  | Complex (Complex Double)
-  | Rational Integer Integer
-  | Float Float
-  | Char Char
-  | String String
-  | Bool Bool
 
 symbol :: Parser Char
 symbol = oneOf "!$%&|*+-/:<=>?@^_~"

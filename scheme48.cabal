@@ -26,13 +26,18 @@ version:            0.1.0.0
 extra-source-files: CHANGELOG.md
 
 Library
-    exposed-modules: SchemeParser
+    exposed-modules: Scheme,
+                     SchemeParser,
+                     SchemeEval
 
 executable scheme48
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules: SchemeParser
+    other-modules: Scheme,
+                   SchemeParser,
+                   SchemeEval
+
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
