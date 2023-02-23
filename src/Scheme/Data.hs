@@ -1,4 +1,4 @@
-module Scheme
+module Scheme.Data
   ( LispVal(..)
   ) where
 
@@ -19,7 +19,6 @@ data LispVal
   | Bool Bool
 
 instance Show LispVal where
-  show :: LispVal -> String
   show = showVal
 
 showVal :: LispVal -> String

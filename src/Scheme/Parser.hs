@@ -1,4 +1,4 @@
-module SchemeParser
+module Scheme.Parser
   ( readExpr
   ) where
 
@@ -6,7 +6,7 @@ import           Data.Complex                  (Complex ((:+)))
 import           GHC.Arr                       (listArray)
 import           Numeric                       (readBin, readFloat, readHex,
                                                 readOct)
-import           Scheme
+import           Scheme.Data
 import           Text.ParserCombinators.Parsec
 
 symbol :: Parser Char

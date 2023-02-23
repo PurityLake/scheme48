@@ -1,0 +1,44 @@
+cabal-version:      2.4
+name:               Scheme
+version:            0.1.0.0
+build-type:         Simple
+-- synopsis:
+-- description:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Robert O'Shea
+maintainer:         robertoshea2k11@gmail.com
+copyright:          2023 Robert O'Shea
+category:           Programming
+extra-source-files: 
+  README.md
+  CHANGELOG.md
+
+library
+  hs-source-dirs: src
+  exposed-modules:    
+    Scheme.Data,
+    Scheme.Parser,
+    Scheme.Eval
+  build-depends:    
+    base ^>=4.16.4.0, 
+    parsec
+
+executable scheme
+  main-is:          
+    Scheme.hs
+  build-depends:    
+    base ^>=4.16.4.0, 
+    parsec,
+    Scheme
+  default-language: Haskell2010
+  ghc-options:      
+    -Wall                
+    -Wcompat           
+    -Widentities        
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wmissing-export-lists
+    -Wmissing-home-modules
+    -Wpartial-fields
+    -Wredundant-constraints

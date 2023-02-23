@@ -1,8 +1,4 @@
-module Main
-  ( main
-  ) where
-
-import           SchemeParser
+import           Scheme.Parser
 import           System.Environment (getArgs)
 
 main :: IO ()
